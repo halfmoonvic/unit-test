@@ -9,10 +9,11 @@ module.exports = {
     browser: true,
     node: true,
     es6: true,
-    commonjs: true
+    commonjs: true,
+    'jest/globals': true
   },
   globals: {},
-  plugins: [],
+  plugins: ['jest'],
   extends: ['eslint:recommended', 'prettier'],
   rules: {
     'comma-dangle': [1, 'never'],
