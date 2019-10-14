@@ -1,4 +1,4 @@
-const { add, mul } = require('../src/math');
+import { add, mul } from '../src/math';
 
 describe('#math', () => {
   describe('add', () => {
