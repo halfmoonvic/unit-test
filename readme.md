@@ -39,6 +39,35 @@ test('should return 5 when 2 + 3', () => {
 2. `jest --coverage` 覆盖率
 3. `jest --watchAll` 监视文件变化自动测试
 
+### jest 匹配器
+1. expect(10).toBe(10);
+2. expect(a).toEqual(b); 
+3. expect(null).toBeNull(); 
+4. expect(undefined).toBeUndefined(); 
+5. expect(a).toBeDefined(); 
+6. expect(1).toBeTruthy(); 
+7. expect(0).toBeFalsy(); 
+8. expect(a).not.toBeFalsy(); 
+9. expect(10).toBeGreaterThan(9); 
+10. expect(10).toBeLessThan(11); 
+11. expect(10).toBeGreaterThanOrEqual(9); 
+12. expect(10).toBeLessThanOrEqual(11); 
+13. expect(0.1 + 0.2).toBeCloseTo(0.3); 
+14. expect('abcdefg').toMatch(/ab/);
+15. 
+  ```
+  const arr = ['dell', 'lee', 'imooc'];
+  const data = new Set(arr);
+  expect(data).toContain('dell');
+  ```
+16. 
+  ```
+  const throwNewError = () => {
+    throw new Error('error');
+  };
+  expect(throwNewError).toThrow(/error/)
+  ```
+
 ### `jest --watchAll` 下的几种命令模式
 1. `a` 模式 测试 所有的 tests
 2. `f` 模式 测试 之前测试失败的 tests
