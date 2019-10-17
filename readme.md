@@ -74,3 +74,10 @@ test('should return 5 when 2 + 3', () => {
 3. `o` 模式 测试 当前文件更改过的 测试文件里面的 tests。 可以直接写成`jest --watch`（需要有 git 记录文件变化）
 4. `t` 模式 根据测试用例的名字，只测试 过滤后的 测试
 5. `p` 模式 根据测试文件的名字，只测试 过滤后的 测试文件当中的 测试
+
+### jest [异步测试](https://jestjs.io/docs/zh-Hans/asynchronous)
+1. 使用 async await 时，与平常使用 无差别，在测试前 await 就好，不过 测试 错误的时候，需要 `expect.assertions(1)`
+2. 使用 promise 的 .then .catch 语法的时候，与 上面差不多，错误情况下需要 `expect.assertions(1)`。 注意 在 `test` 测试用例当中 需要 `return` 这个 `promise`
+3. 使用 jest 提供的 `resolves rejects` 的接口，在判断错误的情况下不需要 `expect.assertions(1)`。但 仍需返回这个 `promise`
+
+
