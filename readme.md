@@ -81,3 +81,24 @@ test('should return 5 when 2 + 3', () => {
 3. 使用 jest 提供的 `resolves rejects` 的接口，在判断错误的情况下不需要 `expect.assertions(1)`。但 仍需返回这个 `promise`
 
 
+### jest 中的勾子函数 [Setup and Teardown](https://jestjs.io/docs/zh-Hans/setup-teardown)
+1. `beforeAll`
+2. `beforeEach`
+3. `afterEach`
+4. `beforeAll`
+
+### [describe 分组 作用域](https://jestjs.io/docs/zh-Hans/setup-teardown#作用域)
+默认情况下，before 和 after 的块可以应用到文件中的每个测试。 此外可以通过 describe 块来将测试分组。 当 before 和 after 的块在 describe 块内部时，则其只适用于该 describe 块内的测试。  
+执行顺序的时候，是先执行 describe，然后在执行各个勾子函数的。一些逻辑 就不要写在 describe 里面
+
+### test.only
+To run only one test with Jest, temporarily change that test command to a test.only
+```
+test.only('this will be the only test that runs', () => {
+  expect(true).toBe(false);
+});
+
+test('this test will not run', () => {
+  expect('A').toBe('A');
+});
+```
