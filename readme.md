@@ -102,3 +102,6 @@ test('this test will not run', () => {
   expect('A').toBe('A');
 });
 ```
+
+### [Mock Functions](https://jestjs.io/docs/zh-Hans/mock-functions)
+待实例理解用途
