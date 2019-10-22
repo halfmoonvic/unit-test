@@ -121,3 +121,5 @@ test('this test will not run', () => {
 2. `jest.runAllTimers();` “快进”时间使得所有定时器回调被执行
 3. `jest.runOnlyPendingTimers()` Run Pending Timers
 4. `jest.advancertimersbytime(msToRun)` Advance Timers by Time
+
+### [ES6 Class Mocks](https://jestjs.io/docs/zh-Hans/es6-class-mocks)
