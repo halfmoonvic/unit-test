@@ -114,3 +114,10 @@ test('this test will not run', () => {
 2. 代码发生变化的时候，通过 控制台 按 `u` 来更新 快照
 3. 多处 test case 更改的时候，按 `i` 来交互式的 更新快照
 4. `expect.any(Date)` 值的类型为 Date 即可
+
+### [Timer Mocks](https://jestjs.io/docs/zh-Hans/timer-mocks)
+原生的定时器函数(如：setTimeout, setInterval, clearTimeout, clearInterval)并不是很方便测试，因为程序需要等待相应的延时  
+1. `jest.useFakeTimers();`
+2. `jest.runAllTimers();` “快进”时间使得所有定时器回调被执行
+3. `jest.runOnlyPendingTimers()` Run Pending Timers
+4. `jest.advancertimersbytime(msToRun)` Advance Timers by Time
