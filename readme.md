@@ -105,3 +105,10 @@ test('this test will not run', () => {
 
 ### [Mock Functions](https://jestjs.io/docs/zh-Hans/mock-functions)
 待实例理解用途
+
+### [Snapshot Testing](https://jestjs.io/docs/en/snapshot-testing)
+1. `toMatchSnapshot` 生成快照
+2. `toMatchInlineSnapshot` 将生成的快照放置到 当前的 test case 中
+2. 代码发生变化的时候，通过 控制台 按 `u` 来更新 快照
+3. 多处 test case 更改的时候，按 `i` 来交互式的 更新快照
+4. `expect.any(Date)` 值的类型为 Date 即可
