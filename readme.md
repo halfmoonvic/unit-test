@@ -104,7 +104,9 @@ test('this test will not run', () => {
 ```
 
 ### [Mock Functions](https://jestjs.io/docs/zh-Hans/mock-functions)
-待实例理解用途
+待实例理解用途  
+
+1. `jest.mock('../src/mock.js');`
 
 ### [Snapshot Testing](https://jestjs.io/docs/en/snapshot-testing)
 1. `toMatchSnapshot` 生成快照
