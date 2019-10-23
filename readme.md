@@ -32,7 +32,7 @@ test('should return 5 when 2 + 3', () => {
 2. `npm run jest`
 3. `jest (babel-jest)` jest 检测是否安装了 babel
 4. `babel-core` 是否安装了 babel-core
-5. 去 .babelrc 配置
+5. 获取 .babelrc 配置
 6. 在 运行 测试之前，结合 babel，先把你的代码做一次转化
 7. 运行转化过的 测试用例代码
 
@@ -42,23 +42,23 @@ test('should return 5 when 2 + 3', () => {
 2. `jest --coverage` 覆盖率
 3. `jest --watchAll` 监视文件变化自动测试
 
-### jest 匹配器
+### jest 匹配器 [Expect](https://jestjs.io/docs/zh-Hans/expect) && [Using Matchers](https://jestjs.io/docs/zh-Hans/using-matchers)
 
-1. expect(10).toBe(10);
-2. expect(a).toEqual(b);
-3. expect(null).toBeNull();
-4. expect(undefined).toBeUndefined();
-5. expect(a).toBeDefined();
-6. expect(1).toBeTruthy();
-7. expect(0).toBeFalsy();
-8. expect(a).not.toBeFalsy();
-9. expect(10).toBeGreaterThan(9);
-10. expect(10).toBeLessThan(11);
-11. expect(10).toBeGreaterThanOrEqual(9);
-12. expect(10).toBeLessThanOrEqual(11);
-13. expect(0.1 + 0.2).toBeCloseTo(0.3);
-14. expect('abcdefg').toMatch(/ab/);
-15.
+1. `expect(10).toBe(10);`
+2. `expect(a).toEqual(b);` toEqual 递归检查对象或数组的每个字段。
+3. `expect(null).toBeNull();` 只匹配 null
+4. `expect(undefined).toBeUndefined();` 只匹配 undefined
+5. `expect(a).toBeDefined();` toBeDefined 与 toBeUndefined 相反
+6. `expect(1).toBeTruthy();` toBeTruthy 匹配任何 if 语句为真
+7. `expect(0).toBeFalsy();` toBeFalsy 匹配任何 if 语句为假
+8. `expect(a).not.toBeFalsy();`
+9. `expect(10).toBeGreaterThan(9);`
+10. `expect(10).toBeLessThan(11);`
+11. `expect(10).toBeGreaterThanOrEqual(9);`
+12. `expect(10).toBeLessThanOrEqual(11);`
+13. `expect(0.1 + 0.2).toBeCloseTo(0.3);` 对于比较浮点数相等，使用 toBeCloseTo 而不是 toEqual，因为你不希望测试取决于一个小小的舍入误差。
+14. `expect('abcdefg').toMatch(/ab/);` toMatch 正则表达式的字符串
+15. toContain 来检查一个数组或可迭代对象是否包含某个特定项
 
 ```
 const arr = ['dell', 'lee', 'imooc'];
@@ -66,13 +66,14 @@ const data = new Set(arr);
 expect(data).toContain('dell');
 ```
 
-16.
+16. 如果你想要测试的特定函数抛出一个错误，在它调用时，使用 toThrow
 
 ```
 const throwNewError = () => {
-  throw new Error('error');
+  throw new Error('you are using the wrong JDK');
 };
-expect(throwNewError).toThrow(/error/)
+// You can also use the exact error message or a regexp
+expect(throwNewError).toThrow(/JDK/)
 ```
 
 ### `jest --watchAll` 下的几种命令模式
