@@ -1,16 +1,17 @@
 <template>
   <div id="app">
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <todo-list />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from '@/components/HelloWorld.vue';
+// import HelloWorld from '@/components/HelloWorld.vue';
+import TodoList from './views/TodoList.vue';
 
 @Component({
   components: {
-    HelloWorld
+    TodoList
   }
 })
 export default class App extends Vue {}
