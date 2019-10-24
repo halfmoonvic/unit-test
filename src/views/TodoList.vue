@@ -1,6 +1,9 @@
 <template>
   <div>
-    <v-header />
+    <v-header @add="addUndoItem" />
+    <ul>
+      <li v-for="item in undoList" :key="item">{{ item }}</li>
+    </ul>
   </div>
 </template>
 
@@ -17,7 +20,13 @@ import Header from './Header.vue';
     VHeader: Header
   }
 })
-export default class TodoList extends Vue {}
+export default class TodoList extends Vue {
+  private undoList: string[] = [];
+
+  private addUndoItem(item: string) {
+    this.undoList.push(item);
+  }
+}
 </script>
 
 <style lang="scss" scoped></style>
