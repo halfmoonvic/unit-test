@@ -38,4 +38,9 @@ describe('Header.vue', () => {
     expect(wrapper.emitted('add')).toBeTruthy();
     expect(wrapper.vm.$data.inputValue).toBe('');
   });
+
+  it('Header 样式发生改变，做提示', () => {
+    const wrapper = shallowMount(Header);
+    expect(wrapper).toMatchSnapshot();
+  });
 });

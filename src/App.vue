@@ -18,6 +18,10 @@ export default class App extends Vue {}
 </script>
 
 <style lang="scss">
+* {
+  margin: 0;
+  padding: 0;
+}
 #nav {
   padding: 30px;
 

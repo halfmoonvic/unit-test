@@ -1,11 +1,16 @@
 <template>
-  <div>
-    <input
-      type="text"
-      data-test="input"
-      v-model="inputValue"
-      @keyup.enter="addTodoItem"
-    />
+  <div class="header">
+    <div class="header-content">
+      TodoList
+      <input
+        class="header-input"
+        type="text"
+        data-test="input"
+        v-model="inputValue"
+        @keyup.enter="addTodoItem"
+        placeholder="TotoItem"
+      />
+    </div>
   </div>
 </template>
 
@@ -29,4 +34,25 @@ export default class Header extends Vue {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.header {
+  line-height: 50px;
+  background: #666;
+}
+.header-content {
+  overflow: hidden;
+  width: 600px;
+  margin: 0 auto;
+  color: #fff;
+  font-size: 24px;
+}
+.header-input {
+  float: right;
+  width: 360px;
+  margin-top: 12px;
+  line-height: 24px;
+  outline: none;
+  color: #333;
+  text-indent: 10px;
+}
+</style>
