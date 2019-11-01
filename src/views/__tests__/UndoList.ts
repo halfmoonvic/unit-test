@@ -2,7 +2,7 @@ import { shallowMount } from '@vue/test-utils';
 import UndoList from '@/views/UndoList.vue';
 
 describe('UndoList.vue', () => {
-  it('Undolist 参数为 [1, 2, 3]， count 值为0，且列表无内容，且存在删除按钮', () => {
+  it('参数为 [1, 2, 3]， count 值为0，且列表无内容，且存在删除按钮', () => {
     const wrapper = shallowMount(UndoList, {
       propsData: { list: [1, 2, 3] }
     });
@@ -14,7 +14,7 @@ describe('UndoList.vue', () => {
     expect(deleteBtns.length).toBe(3);
   });
 
-  it('UndoList 删除按钮 被点击时，向外触发删除事件', () => {
+  it('删除按钮 被点击时，向外触发删除事件', () => {
     const wrapper = shallowMount(UndoList, {
       propsData: { list: [1, 2, 3] }
     });
