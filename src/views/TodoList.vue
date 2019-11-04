@@ -1,7 +1,13 @@
 <template>
   <div>
     <v-header @add="addUndoItem" />
-    <undo-list :list="undoList" @delete="handleDelete" />
+    <undo-list
+      :list="undoList"
+      @changeStatus="handleStatusChanged"
+      @delete="handleDelete"
+      @reset="resetStatus"
+      @change="changeItemValue"
+    />
   </div>
 </template>
 
@@ -37,6 +43,21 @@ export default class TodoList extends Vue {
 
   private handleDelete(index: number) {
     this.undoList.splice(index, 1);
+  }
+
+  private handleStatusChanged(index: number) {
+    this.undoList[index].status = 'input';
+  }
+
+  private resetStatus() {
+    this.undoList.forEach((item: Task) => {
+      item.status = 'div';
+    });
+  }
+
+  private changeItemValue(model: any) {
+    const { value, index } = model;
+    this.undoList[index].value = value;
   }
 }
 </script>

@@ -96,4 +96,149 @@ describe('TodoList.vue', () => {
       }
     ]);
   });
+
+  it('列表项被点击，向外触发 status 事件', () => {
+    const wrapper = shallowMount(TodoList);
+    wrapper.setData({
+      undoList: [
+        {
+          status: 'div',
+          value: 1
+        },
+        {
+          status: 'div',
+          value: 2
+        },
+        {
+          status: 'div',
+          value: 3
+        }
+      ]
+    });
+
+    (wrapper.vm as any).handleDelete(1);
+    expect(wrapper.vm.$data.undoList).toEqual([
+      {
+        status: 'div',
+        value: 1
+      },
+      {
+        status: 'div',
+        value: 3
+      }
+    ]);
+  });
+
+  it('handleStatusChanged 方法执行时，Undolist 内容发生变化', () => {
+    const wrapper = shallowMount(TodoList);
+    wrapper.setData({
+      undoList: [
+        {
+          status: 'div',
+          value: 1
+        },
+        {
+          status: 'div',
+          value: 2
+        },
+        {
+          status: 'div',
+          value: 3
+        }
+      ]
+    });
+
+    (wrapper.vm as any).handleStatusChanged(1);
+    expect(wrapper.vm.$data.undoList).toEqual([
+      {
+        status: 'div',
+        value: 1
+      },
+      {
+        status: 'input',
+        value: 2
+      },
+      {
+        status: 'div',
+        value: 3
+      }
+    ]);
+  });
+
+  it('resetStatus 方法执行时, Undolist 内容发生变化', () => {
+    const wrapper = shallowMount(TodoList);
+    wrapper.setData({
+      undoList: [
+        {
+          status: 'div',
+          value: 1
+        },
+        {
+          status: 'input',
+          value: 2
+        },
+        {
+          status: 'div',
+          value: 3
+        }
+      ]
+    });
+
+    (wrapper.vm as any).resetStatus();
+
+    expect(wrapper.vm.$data.undoList).toEqual([
+      {
+        status: 'div',
+        value: 1
+      },
+      {
+        status: 'div',
+        value: 2
+      },
+      {
+        status: 'div',
+        value: 3
+      }
+    ]);
+  });
+
+  it('changeItemValue 方法执行时, Undolist 内容发生变化', () => {
+    const wrapper = shallowMount(TodoList);
+    wrapper.setData({
+      undoList: [
+        {
+          status: 'div',
+          value: 1
+        },
+        {
+          status: 'div',
+          value: 2
+        },
+        {
+          status: 'div',
+          value: 3
+        }
+      ]
+    });
+
+    (wrapper.vm as any).changeItemValue({
+      value: 4,
+      index: 1
+    });
+
+    expect(wrapper.vm.$data.undoList).toEqual([
+      {
+        status: 'div',
+        value: 1
+      },
+      {
+        status: 'div',
+        value: 4
+      },
+      {
+        status: 'div',
+        value: 3
+      }
+    ]);
+  });
 });

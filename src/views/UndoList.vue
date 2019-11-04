@@ -6,11 +6,21 @@
     <ul class="list">
       <li
         class="item"
+        data-test="item"
         v-for="(item, index) in list"
         :key="item.value"
-        data-test="item"
+        @click="changeStatus(index)"
       >
-        {{ item.value }}
+        <input
+          type="text"
+          class="input"
+          v-if="item.status === 'input'"
+          data-test="input"
+          :value="item.value"
+          @blur="handleInput"
+          @change="handleChange($event, index)"
+        />
+        <span v-else>{{ item.value }}</span>
         <span
           class="delete"
           data-test="delete-button"
@@ -36,6 +46,18 @@ export default class UndoList extends Vue {
 
   private handleDelete(index: number) {
     this.$emit('delete', index);
+  }
+
+  private changeStatus(index: number) {
+    this.$emit('changeStatus', index);
+  }
+
+  private handleInput() {
+    this.$emit('reset');
+  }
+
+  private handleChange(e: any, index: number) {
+    this.$emit('change', { value: e.target.value, index });
   }
 }
 </script>
@@ -94,5 +116,11 @@ export default class UndoList extends Vue {
   font-size: 12px;
   text-indent: 0;
   cursor: pointer;
+}
+
+.input {
+  width: 460px;
+  height: 22px;
+  text-indent: 10px;
 }
 </style>
