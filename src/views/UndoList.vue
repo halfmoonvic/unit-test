@@ -7,10 +7,10 @@
       <li
         class="item"
         v-for="(item, index) in list"
-        :key="item"
+        :key="item.value"
         data-test="item"
       >
-        {{ item }}
+        {{ item.value }}
         <span
           class="delete"
           data-test="delete-button"

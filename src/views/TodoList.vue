@@ -14,6 +14,11 @@ import { Component } from 'vue-property-decorator';
 import Header from './Header.vue';
 import UndoList from './UndoList.vue';
 
+interface Task {
+  status: string;
+  value: string;
+}
+
 @Component({
   components: {
     VHeader: Header,
@@ -21,10 +26,13 @@ import UndoList from './UndoList.vue';
   }
 })
 export default class TodoList extends Vue {
-  private undoList: string[] = [];
+  private undoList: Task[] = [];
 
-  private addUndoItem(item: string) {
-    this.undoList.push(item);
+  private addUndoItem(inputValue: string) {
+    this.undoList.push({
+      status: 'div',
+      value: inputValue
+    });
   }
 
   private handleDelete(index: number) {
