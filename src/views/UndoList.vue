@@ -6,7 +6,7 @@
     <ul class="list">
       <li
         class="item"
-        data-test="item"
+        data-test="list-item"
         v-for="(item, index) in list"
         :key="item.value"
         @click="changeStatus(index)"
