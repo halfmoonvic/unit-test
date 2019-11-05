@@ -1,12 +1,13 @@
 import { mount } from '@vue/test-utils';
 import TodoList from '@/views/TodoList.vue';
+import store from '../../store';
 
 it(`
    1. 用户会在header输入框输入内容
    2. 用户会点击回车按钮
    3. 列表项应该增加用户输入内容的列表项
   `, () => {
-  const wrapper = mount(TodoList);
+  const wrapper = mount(TodoList, { store });
   const inputElm = wrapper.find('[data-test="header-input"]');
   const content = 'fjeaiofjeia';
   inputElm.setValue(content);

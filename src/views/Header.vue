@@ -6,7 +6,8 @@
         class="header-input"
         type="text"
         data-test="header-input"
-        v-model="inputValue"
+        :value="inputValue"
+        @input="onInput"
         @keyup.enter="addTodoItem"
         placeholder="TotoItem"
       />
@@ -23,13 +24,23 @@ import { Component } from 'vue-property-decorator';
 
 @Component
 export default class Header extends Vue {
-  private inputValue: string = '';
+  // private inputValue: string = '';
+
+  private get inputValue() {
+    return this.$store.state.inputValue;
+  }
+
+  private onInput(e: any) {
+    this.$store.commit('changeInputValue', e.target.value);
+  }
+
   private addTodoItem() {
     if (!this.inputValue) {
       return;
     }
     this.$emit('add', this.inputValue);
-    this.inputValue = '';
+    // this.inputValue = '';
+    this.$store.commit('changeInputValue', '');
   }
 }
 </script>
